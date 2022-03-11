@@ -7,13 +7,13 @@
 
 <script>
 export default {
-  name: "ue4Player",
+  name: 'ue4Player',
   methods: {
-    xxx(){
-      //console.log('123');
+    xxx () {
+      console.log('点击ue层')
     }
-  },
-};
+  }
+}
 </script>
 
 <style scoped>

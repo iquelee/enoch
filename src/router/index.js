@@ -1,11 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
-import About from '../views/About.vue'
-import mainFrame from '../views/mainFrame.vue'
-import termFrame from '../views/termFrame.vue'
-import doorFrame from '../views/doorFrame.vue'
-import fix from '../views/fix.vue'
+import Detail from '../views/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -16,31 +12,14 @@ const routes = [
     component: Main,
     children: [
       {
-        path: '/mainFrame',
-        name: 'mainFrame',
-        component: mainFrame
-      },
-      {
-        path: '/termFrame',
-        name: 'termFrame',
-        component: termFrame
-      },
-      {
-        path: '/doorFrame',
-        name: 'doorFrame',
-        component: doorFrame
-      },
-      {
-        path: '/fix',
-        name: 'fix',
-        component: fix
+        path: 'detail',
+        name: 'Detail',
+        component: Detail,
+        props ($route) {
+          return { info: $route.query.info }
+        }
       }
     ]
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: About
   }
 ]
 

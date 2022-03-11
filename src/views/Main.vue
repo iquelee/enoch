@@ -1,51 +1,35 @@
 <template>
   <div class="hud">
     <div class="header bg-dark">
-      <div class="title d-flex ai-center">
-        <img src="../assets/logo.svg" height="20px" class="ml-5">
+      <div class="title d-flex ai-center jc-around">
+        <img src="../assets/logo.svg" height="20px" style="margin-left:80px">
         <span class="text-white fs-xl ml-3">|</span>
-        <p class="text-white fs-xl ml-3">打磨工位桁架安装示意</p>
+        <p class="text-white fs-xxl ml-3" style="margin-right:80px">打磨工位桁架安装示意</p>
       </div>
     </div>
     <!-- end of header -->
     <div class="container d-flex">
       <div class="aside d-flex flex-col px-3 pt-4">
-        <router-link to="/mainFrame"  active-class="active">
-          <div class="menuItem mt-4" @click='onClickMain()'>
-            <p class="fs-xl">主桁架</p>
-          </div>
-          <div class="menuInfo mt-2 pt-4">
-            <p class="fs-s text-white">50mmx50mmx2mm</p>
-            <p class="fs-s text-white">镀锌方管</p>
-          </div>
-        </router-link>
-        <router-link to="/termFrame" active-class="active">
-          <div class="menuItem mt-4" @click='onClickTerm()'>
-            <p class="fs-xl text-grey">终端桁架</p>
-          </div>
-          <div class="menuInfo mt-2 pt-4">
-            <p class="fs-s text-white">40mmx40mmx2mm</p>
-            <p class="fs-s text-white">镀锌方管</p>
-          </div>
-        </router-link>
-        <router-link to="/doorFrame" active-class="active">
-          <div class="menuItem mt-4">
-            <p class="fs-xl text-grey">门楣桁架</p>
-          </div>
-          <div class="menuInfo mt-2 pt-4">
-            <p class="fs-s text-white">40mmx40mmx2mm</p>
-            <p class="fs-s text-white">镀锌方管</p>
-          </div>
-        </router-link>
-        <router-link to="/fix" active-class="active">
-          <div class="menuItem mt-4">
-            <p class="fs-xl text-grey">吊装钢筋</p>
-          </div>
-          <div class="menuInfo mt-2 pt-4">
-            <p class="fs-s text-white">∅20mm</p>
-            <p class="fs-s text-white">螺纹钢</p>
-          </div>
-        </router-link>
+        <ul>
+          <li v-for="item in frameList" :key="item.id">
+             <router-link :to="{
+               name:'Detail',
+               query: {
+                 info: item.info
+               }
+               }"
+               active-class="active" exact
+               @click.native="onClick(item.frame)">
+                <div class="menuItem mt-5">
+                  <p class="fs-xxl mt-2">{{ item.title }}</p>
+                </div>
+                <div class="menuInfo mt-2 pt-4">
+                  <p class="fs-xl text-white mt-2">{{ item.size }}</p>
+                  <p class="fs-xl text-white">{{ item.material }}</p>
+                </div>
+             </router-link>
+          </li>
+        </ul>
       </div>
       <div class="main flex-1">
         <router-view></router-view>
@@ -59,23 +43,36 @@
 
 <script>
 import { apiSend, apiRegister } from '../ue4Player/app'
-
 export default {
   name: 'Main',
+  data () {
+    return {
+      frameList: [
+        { id: '001', frame: 'mainFrame', title: '主桁架', size: '50mmx50mmx2mm', material: '镀锌方管', info: '主桁架由50mmx50mmx2mm镀锌方管焊接，桁架底部距离地面3米，以钢筋吊装，安装T5LED日光灯管（首尾相连）' },
+        { id: '002', frame: 'termFrame', title: '终端桁架', size: '40mmx40mmx2mm', material: '镀锌方管', info: '终端桁架由40mmx40mmx2mm镀锌方管焊接于主桁架之上，两根方管内空200mm，而且不能有吊架等阻碍物，以免影响吸尘管路的铺设。在安装终端的两端，需要预接气源（工作气压不低于6公斤）。' },
+        { id: '003', frame: 'fix', title: '吊装钢筋', size: '∅20mm', material: '螺纹钢', info: '吊装钢筋由直径20mm螺纹钢组成，吊装高度保证桁架底部距离地面3米，工作前应了解整体重量，安全选用机械工具。' }
+      ]
+    }
+  },
   mounted () {
     apiRegister('onUE4Call', (info) => {
       console.log(info)
     })
   },
   methods: {
-    onClickMain () {
-      apiSend('mainFrame', () => {
-      })
-    },
-    onClickTerm () {
-      apiSend('termFrame', () => {
+    onClick (frame) {
+      console.log(frame)
+      apiSend(frame, () => {
       })
     }
+    // onClick2 () {
+    //   apiSend('termFrame', () => {
+    //   })
+    // },
+    // onClick3 () {
+    //   apiSend('fix', () => {
+    //   })
+    // }
   }
 }
 </script>
@@ -90,29 +87,28 @@ export default {
     letter-spacing: 2px;
   }
   .title {
-    width:460px;
+    width:640px;
     height: 8vh;
     background: #000000;
     box-shadow: inset 0px 0px 24px #6778FF;
-    text-align: center;
     margin: 0 auto;
   }
   .container {
-    height:92vh;
+    height:1vh;
   }
   .menuItem {
-    width:180px;
-    height: 48px;
+    width:240px;
+    height: 60px;
     background: #000000;
     border: 1px solid #666666;
   }
   .infoItem {
-    width:180px;
+    width:200px;
     height: 48px;
   }
   .menuInfo {
-    width:180px;
-    height: 64px;
+    width:240px;
+    height: 80px;
     background: #000000;
     box-shadow: inset 0px 0px 24px #6778FF;
     display: none;
@@ -132,10 +128,17 @@ export default {
   }
 
   .active > .menuItem > p {
+    padding-top: 8px;
     color: #ffffff;
   }
 
   .active .menuInfo {
     display: block;
+  }
+  p {
+    line-height: 18px;
+  }
+  .main, .info {
+    pointer-events:none
   }
 </style>
