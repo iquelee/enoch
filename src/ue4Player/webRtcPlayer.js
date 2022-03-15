@@ -1,3 +1,4 @@
+/* eslint-disable */
 export function webRtcPlayer(parOptions) {
     parOptions = parOptions || {};
     
