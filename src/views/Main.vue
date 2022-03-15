@@ -15,8 +15,7 @@
              <router-link :to="{
                name:'Detail',
                query: {
-                 info: item.info,
-                 time:new Date().getTime()
+                 info: item.info
                }
                }"
                active-class="active" exact
@@ -33,6 +32,7 @@
         </ul>
       </div>
       <div class="main flex-1">
+        <!-- 全路径Url，只要key变化了就刷新页面 -->
         <router-view :key="$route.fullPath"></router-view>
       </div>
       <div class="info px-3 pt-4">
@@ -66,14 +66,6 @@ export default {
       apiSend(frame, () => {
       })
     }
-    // onClick2 () {
-    //   apiSend('termFrame', () => {
-    //   })
-    // },
-    // onClick3 () {
-    //   apiSend('fix', () => {
-    //   })
-    // }
   }
 }
 </script>
