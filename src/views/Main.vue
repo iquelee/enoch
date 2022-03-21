@@ -3,7 +3,7 @@
     <div class="header bg-dark">
       <div class="title d-flex ai-center jc-around">
         <img src="../assets/logo.svg" height="20px" style="margin-left:80px">
-        <span class="text-white fs-xl ml-3">|</span>
+        <span class="text-white fs-xxl ml-3">|</span>
         <p class="text-white fs-xxl ml-3" style="margin-right:80px">打磨工位桁架安装示意</p>
       </div>
     </div>
