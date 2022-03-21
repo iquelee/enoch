@@ -2,7 +2,7 @@
   <div class="main animate__animated animate__zoomIn">
     <div class="installInfo px-5 py-3">
       <p class="text-primary fs-xxl mt-3 fw-9">安装说明</p>
-      <p class="text-white fs-xxl mt-3 fw-2">{{ info }}</p>
+      <p class="text-white fs-xxl mt-3 mb-3 fw-2">{{ info }}</p>
     </div>
   </div>
 </template>

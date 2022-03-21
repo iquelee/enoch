@@ -50,7 +50,7 @@ export default {
     return {
       frameList: [
         { id: '001', frame: 'mainFrame', title: '主桁架', size: '50mmx50mmx2mm', material: '镀锌方管', info: '主桁架由50mmx50mmx2mm镀锌方管焊接，桁架尺寸和车位对应，底部距离地面3米吊装，主桁架下方安装T5LED日光灯管（首尾相连）' },
-        { id: '002', frame: 'termFrame', title: '终端桁架', size: '40mmx40mmx2mm', material: '镀锌方管', info: '终端桁架由40mmx40mmx2mm镀锌方管焊接于主桁架之上，两根方管内空200mm，而且不能有吊架等阻碍物，以免影响吸尘管路的铺设。在安装终端的两端，需要预接气源（工作气压不低于6公斤）。' },
+        { id: '002', frame: 'termFrame', title: '终端桁架', size: '40mmx40mmx2mm', material: '镀锌方管', info: '终端桁架由40mmx40mmx2mm镀锌方管焊接于主桁架之上，和内侧主桁架间距1.5~2米。两根方管内空200mm，而且不能有吊架等阻碍物，以免影响吸尘管路的铺设。在安装终端的两端，需要预接气源（工作气压不低于6公斤）。' },
         { id: '003', frame: 'fix', title: '吊装方管', size: '30mmx30mmx2mm', material: '镀锌方管', info: '吊装材料为30mmx30mmx2mm镀锌方管，吊装高度保证桁架底部距离地面3米，工作前应了解整体重量，安全选用机械工具。' }
       ]
     }
